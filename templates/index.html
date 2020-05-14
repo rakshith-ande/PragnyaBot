@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PragnyaBot</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/semantic.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css">
+	<script>
+		/*$(document.getElementById('scrl')).ready(function(){ 
+      		$(document.getElementById('scrl')).scrollTop($(document.getElementById('scrl')).height()); 
+    	});
+    	function gototab(reload)
+		{
+		    window.location.hash = '#scrl';
+		    window.location.reload(true);
+		}*/
+		function go(){
+			window.location='#bottom';
+		}
+		
+	</script>
+	<style>
+		
+boy {
+    /* max-height: 600px; */
+    background-color: hsla(200,40%,30%,.4);
+    background-image:       
+        url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
+        url('https://78.media.tumblr.com/66445d34fe560351d474af69ef3f2fb0/tumblr_p7n908E1Jb1uy4lhuo1_1280.png'),
+        url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
+        url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
+        url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+    background-repeat: repeat-x;
+    background-position: 
+        0 20%,
+        0 100%,
+        0 50%,
+        0 100%,
+        0 0;
+    background-size: 
+        2500px,
+        800px,
+        500px 200px,
+        1000px,
+        400px 260px;
+    animation: 50s para infinite linear;
+    }
+
+@keyframes para {
+    100% {
+        background-position: 
+            -5000px 20%,
+            -800px 95%,
+            500px 50%,
+            1000px 100%,
+            400px 0;
+        }
+    }
+
+
+	</style>
+</head>
+<body style="background-color: #868f8a;background-image: url('{% static 'img/1.png'%}');background-size: cover;">
+	<div class="ui raised segment teal centered header" style="height: 48px;">
+		<div style="margin-top: -10px;">Antahpragnya2020</div>
+	</div>
+
+
+	<div class="scrolling content">
+	<div class="ui stackable grid">
+		<div class="two wide column"></div>
+		<div class="twelve wide column">
+			<div class="ui active modal">
+			<div class="ui teal header" style="height: 60px;">
+				<img src="{% static 'img/logo.png'%}" style="margin-top: -12px;">
+				PragnyaBot
+			</div>
+			<div class="scrolling content" id="crl" style="background-image: url('{% static 'img/1.jpg'%}');"  onload="go()">
+				<body onload="go()">
+
+				{% for chat in chat %}
+
+				{% if forloop.counter|divisibleby:2 %}
+				<div class="ui green message" style="width: 60%;margin-left: 2%;font-size: 15px;color: ;">
+					{{chat}}
+				</div>
+				{% else %}
+				<div class="ui teal message" style="width: 60%;margin-left: 38%;font-size: 15px;">
+					{{chat}}
+				</div>
+				{% endif %}
+
+				{% endfor %}
+				<a name="bottom"></a>
+				</body>
+			</div>
+			<br>
+			<form class="ui form" action="/" method="POST" style="width: 90%;margin-left: 5%;">
+				<div class="ui field">
+					<div class="ui action input">
+						{% csrf_token %}
+						{{form.title}}
+						<br><br>
+						<button class="ui teal button" style="width: 5%;"><i class="microphone icon"></i></button>
+						<button class="ui blue button" type="submit" value="submit" style="width: 8.5%;"><i class="paper plane icon"></i></button>
+					</div>
+				</div>
+			</form><br>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
